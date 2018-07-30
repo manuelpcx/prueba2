@@ -13,10 +13,12 @@ class TasksController < ApplicationController
   end
 
   def completed
-      @task = Taskcomplet.find(params[:id])
-      @task.completed = true
-      @task.save
-    redirect_to root_path
+    @tasks = Taskcomplet.find_or_create_by(user_id: current_user.id, task_id: params[:id]) != true
+    if @tasks.completed
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   def update
