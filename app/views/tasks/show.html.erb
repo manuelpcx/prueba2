@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <h2><%= @task.name %></h2>
+
+      <%= image_tag @task.photo, class: 'card-img-top' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <% if @task == true %>
+    <%= current_user.name %>
+    <%= image_tag current_user.photo %>
+    <% end %>
+  </div>
+
+</div>
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
